@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visión Celestial | Una Iglesia Cristiana en Bridgeport</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <style>
+        :root {
+            --color-bg: #0A1931; /* Royal Blue */
+            --color-primary: #FFD700; /* Gold */
+            --color-secondary: #F1E5AC; /* Light Gold */
+            --color-text: #E0E0E0; /* Light Gray */
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+        }
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Hero Background */
+        #home {
+            background: radial-gradient(ellipse at center, #182c59 0%, #0a1931 100%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+        }
+        .section-title {
+            font-size: 3rem; 
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: -webkit-linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #B0B0B0; /* Mid Gray */
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 3rem auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.85rem 2rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: #000;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+        }
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(255, 215, 0, 0.6);
+        }
+        /* Animation for elements on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-effect {
+            background: rgba(24, 44, 89, 0.5); /* Royal Blue Glass */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+        .ministry-card {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .ministry-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(10, 25, 49, 0.9) 0%, rgba(10, 25, 49, 0.1) 60%);
+            transition: all 0.5s ease;
+        }
+        .ministry-card:hover::before {
+            background: linear-gradient(to top, rgba(255, 215, 0, 0.7) 0%, rgba(10, 25, 49, 0.1) 70%);
+        }
+        .ministry-content {
+            position: relative;
+            z-index: 2;
+            padding: 1.5rem;
+            color: white;
+            transition: all 0.5s ease;
+        }
+        .ministry-card:hover .ministry-content {
+            transform: translateY(-10px);
+        }
+        /* 2D Dove Animation */
+        .floating-dove {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12rem; /* Adjust size as needed */
+            opacity: 0.1;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+        @keyframes float {
+            0% { transform: translate(-50%, 0px); }
+            50% { transform: translate(-50%, -20px); }
+            100% { transform: translate(-50%, 0px); }
+        }
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .slide {
+            display: none;
+            animation: fade 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -30px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(255, 215, 0, 0.8);
+            color: black;
+        }
+    </style>
+</head>
+<body class="bg-gray-950">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-gray-950/70 backdrop-blur-lg sticky top-0 z-50 shadow-lg shadow-black/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold text-white font-serif">
+                Visión <span style="color: var(--color-primary);">Celestial</span>
+            </a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="text-gray-300 hover:text-white transition">Inicio</a>
+                <a href="#about" class="text-gray-300 hover:text-white transition">Nuestro Llamado</a>
+                <a href="#community" class="text-gray-300 hover:text-white transition">Comunidad</a>
+                <a href="#giving" class="text-gray-300 hover:text-white transition">Ofrendar</a>
+                <a href="#new" class="btn btn-primary text-xs">Soy Nuevo</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-feather="menu" class="text-white"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#home" class="block text-gray-300 hover:text-white transition">Inicio</a>
+            <a href="#about" class="block text-gray-300 hover:text-white transition">Nuestro Llamado</a>
+            <a href="#community" class="block text-gray-300 hover:text-white transition">Comunidad</a>
+            <a href="#giving" class="block text-gray-300 hover:text-white transition">Ofrendar</a>
+            <a href="#new" class="block bg-amber-400 text-amber-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition text-center mt-2">Soy Nuevo</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen overflow-hidden">
+            <div class="floating-dove">🕊️</div>
+            <div class="hero-content flex items-center">
+                <div class="container mx-auto px-6 text-center text-white">
+                    <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-4">Un Lugar Para Pertenecer</h1>
+                    <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto">Somos una iglesia Cristiana, una familia multicultural creciendo en fe, esperanza y amor en el corazón de Bridgeport.</p>
+                    <p class="text-amber-300 italic text-xl mb-8 font-serif">"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos." - Mateo 18:20</p>
+                    <div class="space-y-4 md:space-y-0 md:space-x-4">
+                        <a href="#new" class="btn btn-primary">Planifica Tu Visita</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Service Times & Location -->
+        <section id="service-times" class="py-20" style="background-color: #0F2C59;">
+            <div class="container mx-auto px-6 reveal">
+                <div class="glass-effect rounded-2xl shadow-2xl p-8 md:p-12 flex flex-col lg:flex-row justify-around items-center text-center">
+                    <div class="mb-6 lg:mb-0">
+                        <i data-feather="sun" class="w-12 h-12 mx-auto mb-2" style="color: var(--color-primary);"></i>
+                        <h3 class="text-3xl font-bold font-serif text-white">Domingo Profético</h3>
+                        <p class="text-gray-300">Cada Domingo a las 10:00 AM</p>
+                    </div>
+                    <div class="border-t-2 lg:border-t-0 lg:border-l-2 border-gray-700 w-full lg:w-auto lg:h-24 my-6 lg:my-0"></div>
+                    <div class="mb-6 lg:mb-0">
+                        <i data-feather="zap" class="w-12 h-12 mx-auto mb-2" style="color: var(--color-primary);"></i>
+                        <h3 class="text-3xl font-bold font-serif text-white">Martes de Fuego</h3>
+                        <p class="text-gray-300">Cada Martes a las 7:30 PM</p>
+                    </div>
+                    <div class="border-t-2 lg:border-t-0 lg:border-l-2 border-gray-700 w-full lg:w-auto lg:h-24 my-6 lg:my-0"></div>
+                    <div>
+                        <i data-feather="map-pin" class="w-12 h-12 mx-auto mb-2" style="color: var(--color-primary);"></i>
+                        <h3 class="text-3xl font-bold font-serif text-white">Nuestra Ubicación</h3>
+                        <p class="text-gray-300">1434 State St. Bridgeport, CT 06605</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="py-20" style="background-color: var(--color-bg);">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="section-title">Encuéntranos</h2>
+                <p class="section-subtitle">Estamos convenientemente ubicados en State Street. Utiliza el mapa interactivo para obtener direcciones desde tu ubicación.</p>
+                <div class="rounded-2xl shadow-2xl overflow-hidden mb-8 border-2" style="border-color: rgba(255, 215, 0, 0.3);">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3005.651722806251!2d-73.19932468458246!3d41.1863269792831!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80df7c0a48027%3A0x1613d26f3c1533a3!2s1434%20State%20St%2C%20Bridgeport%2C%20CT%2006605%2C%20USA!5e0!3m2!1sen!2s!4v1692915673123!5m2!1sen!2s&style=invert_color" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0; filter: invert(90%) hue-rotate(180deg);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=1434+State+St,+Bridgeport,+CT+06605" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Obtener Direcciones</a>
+            </div>
+        </section>
+
+        <!-- Our Calling & Beliefs -->
+        <section id="about" class="py-20" style="background-color: #0F2C59;">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title">Una Comunidad de Fe</h2>
+                <p class="section-subtitle">Nuestra misión es ser un faro del amor de Cristo, compartiendo el Evangelio y edificando una comunidad donde todos puedan experimentar la gracia de Dios y encontrar su propósito.</p>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2">
+                        <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Pastores Luis y Ana Mateo" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-4xl font-bold text-white mb-4 font-serif">Guiados por Nuestros Pastores</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Bajo el liderazgo de los pastores <strong>Luis y Ana Mateo</strong>, Visión Celestial es una iglesia comprometida con las verdades eternas de la Biblia. Somos una iglesia multicultural que celebra la diversidad de las naciones, unidos como un solo cuerpo en Cristo. Creemos en el poder transformador del Evangelio y nos esforzamos por vivir nuestra fe de manera auténtica y significativa. Nuestra comunidad es un lugar para preguntas, crecimiento y para descubrir juntos el profundo amor de Jesucristo.</p>
+                        <a href="#" class="btn btn-primary">Nuestras Creencias</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community & Fellowship -->
+        <section id="community" class="py-20" style="background-color: var(--color-bg);">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title">La Vida es Mejor Juntos</h2>
+                <p class="section-subtitle">El crecimiento espiritual ocurre en comunidad. Encuentra tu lugar para conectar, servir y crecer con otros en Visión Celestial.</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Ministry Card 1 -->
+                    <div class="ministry-card group" style="background-image: url('https://placehold.co/600x400/818cf8/FFFFFF?text=Adoración');">
+                        <div class="ministry-content flex flex-col justify-end h-64">
+                            <h3 class="text-2xl font-bold mb-2 font-serif">En Espíritu y en Verdad</h3>
+                            <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Nuestro ministerio de alabanza, dedicado a guiar a la congregación a una adoración genuina.</p>
+                        </div>
+                    </div>
+                    <!-- Ministry Card 2: User-provided image updated here -->
+                    <div class="ministry-card" style="background-image: url('https://i.ibb.co/9v0p4pY/1000049383.jpg');">
+                        <div class="ministry-content flex flex-col justify-end h-64">
+                            <h3 class="text-2xl font-bold mb-2 font-serif">Visión Celestial Danza y Arte</h3>
+                            <p class="text-gray-200 mb-4">Adoramos a Dios a través del movimiento y la creatividad. Un ministerio para expresar nuestra fe con el cuerpo y el alma.</p>
+                        </div>
+                    </div>
+                    <!-- Ministry Card 3 -->
+                    <div class="ministry-card" style="background-image: url('https://placehold.co/600x400/34d399/FFFFFF?text=Niños');">
+                        <div class="ministry-content flex flex-col justify-end h-64">
+                            <h3 class="text-2xl font-bold mb-2 font-serif">La Tribu de Judá</h3>
+                            <p class="text-gray-200 mb-4">Nuestra escuela dominical, donde los niños y jóvenes aprenden la Palabra de Dios de una manera divertida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20" style="background-color: #0F2C59;">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title">Lo Que Nuestra Comunidad Dice</h2>
+                <p class="section-subtitle">Historias de fe, familia y transformación en Visión Celestial.</p>
+                <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <!-- Testimonial 1 -->
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <p class="text-gray-300 italic mb-4">"Desde que llegué a Visión Celestial, sentí que había encontrado mi hogar. La enseñanza es profunda y la comunidad es increíblemente acogedora. ¡Es una verdadera familia!"</p>
+                        <p class="font-bold" style="color: var(--color-primary);">- Maria S.</p>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <p class="text-gray-300 italic mb-4">"Los pastores tienen un corazón genuino para la gente y para la palabra de Dios. Cada servicio me siento renovado y más cerca de Jesús. Mis hijos aman La Tribu de Judá."</p>
+                        <p class="font-bold" style="color: var(--color-primary);">- Juan C.</p>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="glass-effect p-8 rounded-2xl">
+                        <p class="text-gray-300 italic mb-4">"Como una persona que se mudó a Bridgeport, encontrar esta iglesia fue una bendición. La diversidad y el amor que se siente aquí es algo especial. He hecho amigos para toda la vida."</p>
+                        <p class="font-bold" style="color: var(--color-primary);">- David R.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="events" class="py-20" style="background-color: var(--color-bg);">
+            <div class="container mx-auto px-6 reveal">
+                <h2 class="section-title">Próximos Eventos</h2>
+                <p class="section-subtitle">¡No te pierdas lo que está sucediendo en Visión Celestial! Únete a nosotros para estos tiempos especiales de adoración y compañerismo.</p>
+                
+                <div class="slideshow-container glass-effect rounded-2xl shadow-2xl overflow-hidden">
+                    <!-- Slide 1 -->
+                    <div class="slide">
+                        <div class="relative">
+                            <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Noche de Adoración" class="w-full">
+                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
+                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Noche de Adoración</h3>
+                                <p class="text-xl text-amber-300 mb-4">Viernes, 29 de Agosto | 8:00 PM</p>
+                                <a href="https://www.facebook.com/share/16bAo1vvSS/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Más Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <div class="relative">
+                            <img src="https://placehold.co/1200x600/0A1931/FFD700?text=Servicio+Familiar" alt="Servicio Familiar" class="w-full">
+                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
+                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Servicio Especial Familiar</h3>
+                                <p class="text-xl text-amber-300 mb-4">Domingo, 7 de Septiembre | 10:00 AM</p>
+                                <a href="#" class="btn btn-primary">Más Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                         <div class="relative">
+                            <img src="https://placehold.co/1200x600/0A1931/FFD700?text=Conferencia" alt="Conferencia" class="w-full">
+                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
+                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Conferencia de Matrimonios</h3>
+                                <p class="text-xl text-amber-300 mb-4">Sábado, 20 de Septiembre | 9:00 AM - 2:00 PM</p>
+                                <a href="#" class="btn btn-primary">Regístrate Aquí</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Next/prev buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Giving & Stewardship -->
+        <section id="giving" class="py-20 bg-black text-white" style="background-image: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url('https://placehold.co/1920x600/0A1931/FFD700?text=Generosidad'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="section-title">Colabora con la Misión</h2>
+                <p class="section-subtitle">Tu generosidad es un acto de adoración que impulsa el ministerio de Visión Celestial, permitiéndonos compartir la esperanza del Evangelio en Bridgeport y más allá.</p>
+                <a href="#" class="btn btn-primary">Ofrendar en Línea</a>
+            </div>
+        </section>
+        
+        <!-- I'm New Section -->
+        <section id="new" class="py-20" style="background-color: #0F2C59;">
+            <div class="container mx-auto px-6 reveal">
+                 <h2 class="section-title">¿Piensas Visitarnos?</h2>
+                <p class="section-subtitle">Sabemos que visitar una nueva iglesia puede ser intimidante. Queremos que tu primera experiencia en Visión Celestial sea maravillosa.</p>
+                <div class="glass-effect rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+                     <div class="md:w-1/2">
+                        <img src="https://placehold.co/600x400/10b981/FFFFFF?text=Bienvenido" alt="Un ambiente de iglesia acogedor" class="rounded-2xl shadow-lg w-full">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-4xl font-bold text-white mb-4 font-serif">Una Cálida Bienvenida te Espera</h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start"><i data-feather="coffee" class="w-6 h-6 mr-3 mt-1 flex-shrink-0" style="color: var(--color-primary);"></i><span>Ven tal como eres. Encontrarás un ambiente amigable y relajado. ¡Te invitamos un café!</span></li>
+                            <li class="flex items-start"><i data-feather="globe" class="w-6 h-6 mr-3 mt-1 flex-shrink-0" style="color: var(--color-primary);"></i><span>Celebramos la diversidad de culturas. Vengas de donde vengas, aquí tienes un lugar.</span></li>
+                            <li class="flex items-start"><i data-feather="music" class="w-6 h-6 mr-3 mt-1 flex-shrink-0" style="color: var(--color-primary);"></i><span>Nuestros servicios de adoración presentan una mezcla de música contemporánea e himnos eternos, todos enfocados en glorificar a Dios.</span></li>
+                             <li class="flex items-start"><i data-feather="book-open" class="w-6 h-6 mr-3 mt-1 flex-shrink-0" style="color: var(--color-primary);"></i><span>Escucharás un mensaje de la Biblia lleno de esperanza que es práctico y relevante para tu vida.</span></li>
+                            <li class="flex items-start"><i data-feather="smile" class="w-6 h-6 mr-3 mt-1 flex-shrink-0" style="color: var(--color-primary);"></i><span>Tenemos un programa seguro y divertido para tus hijos, donde pueden aprender sobre Jesús a su nivel.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prayer Request -->
+        <section id="prayer" class="py-20" style="background-color: var(--color-bg);">
+            <div class="container mx-auto px-6 max-w-2xl text-center reveal">
+                <h2 class="section-title">¿Cómo Podemos Orar por Ti?</h2>
+                <p class="section-subtitle">La oración es poderosa. Nuestro equipo de oración se siente honrado de interceder por ti. Todas las peticiones son confidenciales.</p>
+                <form class="glass-effect p-8 rounded-2xl shadow-lg text-left">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-300 font-semibold mb-2">Nombre (Opcional)</label>
+                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-gray-800 text-white">
+                    </div>
+                    <div class="mb-4">
+                        <label for="prayer-request" class="block text-gray-300 font-semibold mb-2">Petición de Oración</label>
+                        <textarea id="prayer-request" rows="5" class="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-gray-800 text-white" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">Enviar Petición</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-gray-400 pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <!-- About -->
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-serif">Visión <span style="color: var(--color-primary);">Celestial</span></h3>
+                    <p>Una iglesia Cristiana en Bridgeport, CT, dedicada a amar a Dios y amar a la gente.</p>
+                </div>
+                <!-- Navigation -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Navegación</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="hover:text-white transition">Sobre Nosotros</a></li>
+                        <li><a href="#community" class="hover:text-white transition">Ministerios</a></li>
+                        <li><a href="#events" class="hover:text-white transition">Eventos</a></li>
+                        <li><a href="#giving" class="hover:text-white transition">Ofrendar</a></li>
+                    </ul>
+                </div>
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Conéctate</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i data-feather="map-pin" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> 1434 State St. Bridgeport, CT 06605</li>
+                        <li class="flex items-center"><i data-feather="phone" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> (203) 555-0101</li>
+                        <li class="flex items-center"><i data-feather="mail" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> hola@visioncelestial.org</li>
+                        <li class="flex items-center"><a href="https://www.facebook.com/share/1DufeJu5Ui/" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-white transition"><i data-feather="facebook" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> Síguenos en Facebook</a></li>
+                        <li class="flex items-center"><a href="https://www.instagram.com/heavenlyvision_bpt?igsh=MWxnNGk1amNoOW00YQ==" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-white transition"><i data-feather="instagram" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> Síguenos en Instagram</a></li>
+                        <li class="flex items-center"><a href="https://youtube.com/@visioncelestialbridgeport?si=JJ2n8Rrh3luUiogZ" target="_blank" rel="noopener noreferrer" class="flex items-center hover:text-white transition"><i data-feather="youtube" class="w-4 h-4 mr-2" style="color: var(--color-primary);"></i> Síguenos en YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 mt-8 text-center text-gray-500">
+                <p>&copy; 2025 Visión Celestial. Todos los Derechos Reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Feather Icons
+        feather.replace();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const windowHeight = window.innerHeight;
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Trigger on load
+
+        // Slideshow Logic
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slides[slideIndex-1].style.display = "block";  
+        }
+
+    </script>
+</body>
+</html>
