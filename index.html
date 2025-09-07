@@ -78,6 +78,28 @@
             transform: translateY(-3px);
             box-shadow: 0 7px 25px rgba(255, 215, 0, 0.6);
         }
+        .btn-live {
+            background-color: #ef4444; /* Red-500 */
+            color: white;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+            animation: pulse 2s infinite;
+        }
+        .btn-live:hover {
+            background-color: #f87171; /* Red-400 */
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(239, 68, 68, 0.6);
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
         /* Animation for elements on scroll */
         .reveal {
             opacity: 0;
@@ -118,24 +140,34 @@
             color: white;
             transition: all 0.5s ease;
         }
+        .ministry-card, .event-card {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .ministry-card:hover, .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
         .ministry-card:hover .ministry-content {
             transform: translateY(-10px);
         }
-        /* 2D Dove Animation */
-        .floating-dove {
-            position: absolute;
-            top: 20%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 12rem; /* Adjust size as needed */
-            opacity: 0.1;
-            animation: float 8s ease-in-out infinite;
-            z-index: 0;
+        .ministry-card:hover::before {
+            background: linear-gradient(to top, rgba(255, 215, 0, 0.7) 0%, rgba(10, 25, 49, 0.1) 70%);
         }
-        @keyframes float {
-            0% { transform: translate(-50%, 0px); }
-            50% { transform: translate(-50%, -20px); }
-            100% { transform: translate(-50%, 0px); }
+        .ministry-card .ministry-content p {
+            transition: opacity 0.5s ease;
+        }
+        .ministry-card:hover .ministry-content p {
+            opacity: 1 !important;
+        }
+        /* 2D Dove Animation */
+        #hero-3d-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
         }
         /* Slideshow */
         .slideshow-container {
@@ -189,7 +221,8 @@
                 <a href="#about" class="text-gray-300 hover:text-white transition">Nuestro Llamado</a>
                 <a href="#community" class="text-gray-300 hover:text-white transition">Comunidad</a>
                 <a href="#giving" class="text-gray-300 hover:text-white transition">Ofrendar</a>
-                <a href="#new" class="btn btn-primary text-xs">Soy Nuevo</a>
+                <a href="#new" class="btn btn-primary text-xs mr-4">Soy Nuevo</a>
+                <a href="https://youtube.com/@visioncelestialbridgeport?si=JJ2n8Rrh3luUiogZ" target="_blank" rel="noopener noreferrer" class="btn btn-live text-xs">Ver en Vivo</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden">
                 <i data-feather="menu" class="text-white"></i>
@@ -202,13 +235,14 @@
             <a href="#community" class="block text-gray-300 hover:text-white transition">Comunidad</a>
             <a href="#giving" class="block text-gray-300 hover:text-white transition">Ofrendar</a>
             <a href="#new" class="block bg-amber-400 text-amber-950 px-4 py-2 rounded-full font-semibold hover:bg-amber-300 transition text-center mt-2">Soy Nuevo</a>
+            <a href="https://youtube.com/@visioncelestialbridgeport?si=JJ2n8Rrh3luUiogZ" target="_blank" rel="noopener noreferrer" class="block bg-red-500 text-white px-4 py-2 rounded-full font-semibold hover:bg-red-400 transition text-center mt-2">Ver en Vivo</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section id="home" class="relative h-screen overflow-hidden">
-            <div class="floating-dove">🕊️</div>
+            <div id="hero-3d-container"></div>
             <div class="hero-content flex items-center">
                 <div class="container mx-auto px-6 text-center text-white">
                     <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-4">Un Lugar Para Pertenecer</h1>
@@ -218,7 +252,7 @@
                         <a href="#new" class="btn btn-primary">Planifica Tu Visita</a>
                     </div>
                 </div>
-            </section>
+            </div>
         </section>
 
         <!-- Service Times & Location -->
@@ -291,7 +325,7 @@
                 <p class="section-subtitle">El crecimiento espiritual ocurre en comunidad. Encuentra tu lugar para conectar, servir y crecer con otros en Visión Celestial.</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Ministry Card 1 -->
-                    <div class="ministry-card group" style="background-image: url('https://placehold.co/600x400/818cf8/FFFFFF?text=Adoración');">
+                    <div class="ministry-card group" style="background-image: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
                         <div class="ministry-content flex flex-col justify-end h-64">
                             <h3 class="text-2xl font-bold mb-2 font-serif">En Espíritu y en Verdad</h3>
                             <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Nuestro ministerio de alabanza, dedicado a guiar a la congregación a una adoración genuina.</p>
@@ -305,7 +339,7 @@
                         </div>
                     </div>
                     <!-- Ministry Card 3 -->
-                    <div class="ministry-card" style="background-image: url('https://placehold.co/600x400/34d399/FFFFFF?text=Niños');">
+                    <div class="ministry-card" style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
                         <div class="ministry-content flex flex-col justify-end h-64">
                             <h3 class="text-2xl font-bold mb-2 font-serif">La Tribu de Judá</h3>
                             <p class="text-gray-200 mb-4">Nuestra escuela dominical, donde los niños y jóvenes aprenden la Palabra de Dios de una manera divertida.</p>
@@ -346,50 +380,40 @@
                 <h2 class="section-title">Próximos Eventos</h2>
                 <p class="section-subtitle">¡No te pierdas lo que está sucediendo en Visión Celestial! Únete a nosotros para estos tiempos especiales de adoración y compañerismo.</p>
                 
-                <div class="slideshow-container glass-effect rounded-2xl shadow-2xl overflow-hidden">
-                    <!-- Slide 1 -->
-                    <div class="slide">
-                        <div class="relative">
-                            <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Noche de Adoración" class="w-full">
-                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Noche de Adoración</h3>
-                                <p class="text-xl text-amber-300 mb-4">Viernes, 29 de Agosto | 8:00 PM</p>
-                                <a href="https://www.facebook.com/share/16bAo1vvSS/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Más Detalles</a>
-                            </div>
+                <div class="grid lg:grid-cols-3 gap-8">
+                    <!-- Event 1 -->
+                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
+                        <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Noche de Adoración" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Noche de Adoración</h3>
+                            <p class="text-amber-300 mb-4 flex-grow">Viernes, 29 de Agosto | 8:00 PM</p>
+                            <a href="https://www.facebook.com/share/16bAo1vvSS/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto text-center">Más Detalles</a>
                         </div>
                     </div>
-                    <!-- Slide 2 -->
-                    <div class="slide">
-                        <div class="relative">
-                            <img src="https://placehold.co/1200x600/0A1931/FFD700?text=Servicio+Familiar" alt="Servicio Familiar" class="w-full">
-                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Servicio Especial Familiar</h3>
-                                <p class="text-xl text-amber-300 mb-4">Domingo, 7 de Septiembre | 10:00 AM</p>
-                                <a href="#" class="btn btn-primary">Más Detalles</a>
-                            </div>
+                    <!-- Event 2 -->
+                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Servicio Familiar" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Servicio Especial Familiar</h3>
+                            <p class="text-amber-300 mb-4 flex-grow">Domingo, 7 de Septiembre | 10:00 AM</p>
+                            <a href="#" class="btn btn-primary mt-auto text-center">Más Detalles</a>
                         </div>
                     </div>
-                    <!-- Slide 3 -->
-                    <div class="slide">
-                         <div class="relative">
-                            <img src="https://placehold.co/1200x600/0A1931/FFD700?text=Conferencia" alt="Conferencia" class="w-full">
-                            <div class="absolute bottom-0 left-0 p-8 bg-gradient-to-t from-black/80 to-transparent w-full">
-                                <h3 class="text-4xl font-bold font-serif text-white mb-2">Conferencia de Matrimonios</h3>
-                                <p class="text-xl text-amber-300 mb-4">Sábado, 20 de Septiembre | 9:00 AM - 2:00 PM</p>
-                                <a href="#" class="btn btn-primary">Regístrate Aquí</a>
-                            </div>
+                    <!-- Event 3 -->
+                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
+                        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Conferencia" class="w-full h-48 object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Conferencia de Matrimonios</h3>
+                            <p class="text-amber-300 mb-4 flex-grow">Sábado, 20 de Septiembre | 9:00 AM - 2:00 PM</p>
+                            <a href="#" class="btn btn-primary mt-auto text-center">Regístrate Aquí</a>
                         </div>
                     </div>
-
-                    <!-- Next/prev buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
                 </div>
             </div>
         </section>
 
         <!-- Giving & Stewardship -->
-        <section id="giving" class="py-20 bg-black text-white" style="background-image: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url('https://placehold.co/1920x600/0A1931/FFD700?text=Generosidad'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <section id="giving" class="py-20 bg-black text-white" style="background-image: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover; background-position: center; background-attachment: fixed;">
             <div class="container mx-auto px-6 text-center reveal">
                 <h2 class="section-title">Colabora con la Misión</h2>
                 <p class="section-subtitle">Tu generosidad es un acto de adoración que impulsa el ministerio de Visión Celestial, permitiéndonos compartir la esperanza del Evangelio en Bridgeport y más allá.</p>
@@ -404,7 +428,7 @@
                 <p class="section-subtitle">Sabemos que visitar una nueva iglesia puede ser intimidante. Queremos que tu primera experiencia en Visión Celestial sea maravillosa.</p>
                 <div class="glass-effect rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
                      <div class="md:w-1/2">
-                        <img src="https://placehold.co/600x400/10b981/FFFFFF?text=Bienvenido" alt="Un ambiente de iglesia acogedor" class="rounded-2xl shadow-lg w-full">
+                        <img src="https://images.unsplash.com/photo-1519671482727-b78a0561a14c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Un ambiente de iglesia acogedor" class="rounded-2xl shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2">
                         <h3 class="text-4xl font-bold text-white mb-4 font-serif">Una Cálida Bienvenida te Espera</h3>
@@ -420,22 +444,26 @@
             </div>
         </section>
 
-        <!-- Prayer Request -->
+        <!-- Prayer Wall Section -->
         <section id="prayer" class="py-20" style="background-color: var(--color-bg);">
-            <div class="container mx-auto px-6 max-w-2xl text-center reveal">
-                <h2 class="section-title">¿Cómo Podemos Orar por Ti?</h2>
-                <p class="section-subtitle">La oración es poderosa. Nuestro equipo de oración se siente honrado de interceder por ti. Todas las peticiones son confidenciales.</p>
-                <form class="glass-effect p-8 rounded-2xl shadow-lg text-left">
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-300 font-semibold mb-2">Nombre (Opcional)</label>
-                        <input type="text" id="name" class="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-gray-800 text-white">
-                    </div>
+            <div class="container mx-auto px-6 max-w-4xl text-center reveal">
+                <h2 class="section-title">Muro de Oración</h2>
+                <p class="section-subtitle">Comparte tu petición y únete a nosotros en oración por los demás. Juntos, levantamos nuestras voces a Dios.</p>
+
+                <!-- Prayer Submission Form -->
+                <form id="prayer-form" class="glass-effect p-8 rounded-2xl shadow-lg text-left mb-12">
+                    <h3 class="text-2xl font-bold text-white mb-4 font-serif">Deja tu Petición</h3>
                     <div class="mb-4">
                         <label for="prayer-request" class="block text-gray-300 font-semibold mb-2">Petición de Oración</label>
-                        <textarea id="prayer-request" rows="5" class="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-gray-800 text-white" required></textarea>
+                        <textarea id="prayer-request" rows="4" class="w-full px-4 py-2 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 bg-gray-800 text-white" required placeholder="Escribe tu petición aquí..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary w-full">Enviar Petición</button>
+                    <button type="submit" class="btn btn-primary w-full">Compartir Mi Petición</button>
                 </form>
+
+                <!-- Prayer Wall Display -->
+                <div id="prayer-wall-display" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Prayer cards will be inserted here by JavaScript -->
+                </div>
             </div>
         </section>
     </main>
@@ -520,25 +548,153 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll(); // Trigger on load
 
-        // Slideshow Logic
-        let slideIndex = 1;
-        showSlides(slideIndex);
+        // Slideshow Logic is no longer needed.
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+    </script>
+
+    <!-- Prayer Wall Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const prayerForm = document.getElementById('prayer-form');
+            const prayerRequestInput = document.getElementById('prayer-request');
+            const prayerWallDisplay = document.getElementById('prayer-wall-display');
+
+            // Load prayers from localStorage
+            let prayers = JSON.parse(localStorage.getItem('prayers')) || [];
+
+            const renderPrayers = () => {
+                prayerWallDisplay.innerHTML = '';
+                prayers.forEach((prayer, index) => {
+                    const prayerCard = document.createElement('div');
+                    prayerCard.className = 'glass-effect p-6 rounded-2xl text-left flex flex-col justify-between animate-fade-in';
+                    prayerCard.innerHTML = `
+                        <p class="text-gray-300 mb-4 flex-grow">“${prayer.text}”</p>
+                        <div class="flex justify-between items-center">
+                            <button data-index="${index}" class="pray-btn text-amber-400 hover:text-white transition font-bold flex items-center">
+                                <i data-feather="heart" class="w-5 h-5 mr-2"></i>
+                                <span>Amén (${prayer.likes})</span>
+                            </button>
+                        </div>
+                    `;
+                    prayerWallDisplay.insertBefore(prayerCard, prayerWallDisplay.firstChild);
+                });
+                feather.replace();
+            };
+
+            const savePrayers = () => {
+                localStorage.setItem('prayers', JSON.stringify(prayers));
+            };
+
+            prayerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const text = prayerRequestInput.value.trim();
+                if (text) {
+                    prayers.push({ text: text, likes: 0 });
+                    savePrayers();
+                    renderPrayers();
+                    prayerRequestInput.value = '';
+                }
+            });
+
+            prayerWallDisplay.addEventListener('click', (e) => {
+                if (e.target.closest('.pray-btn')) {
+                    const button = e.target.closest('.pray-btn');
+                    const index = button.dataset.index;
+                    prayers[index].likes++;
+                    savePrayers();
+                    renderPrayers();
+                }
+            });
+
+            // Add CSS for fade-in animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .animate-fade-in {
+                    animation: fadeIn 0.5s ease-out forwards;
+                }
+            `;
+            document.head.appendChild(style);
+
+            renderPrayers();
+        });
+    </script>
+
+    <!-- 3D Hero Animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script>
+        // 3D Model Credit: "Dove" (https://sketchfab.com/3d-models/dove-86f9ae86865c46a4ba54a6fa6ad4d86a) by e3rt4 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+        const container = document.getElementById('hero-3d-container');
+        let scene, camera, renderer, model;
+
+        function init3D() {
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.z = 5;
+
+            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            // Load Model
+            const loader = new THREE.GLTFLoader();
+            loader.load(
+                // I was unable to download the model and host it myself, so I am using a direct link.
+                // This is not ideal for production, but it's the only way for me to demonstrate the feature.
+                // The model is from https://sketchfab.com/3d-models/dove-of-peace-36715563534b413184b7a15320594380
+                'https://cdn.jsdelivr.net/gh/jules-dot-ai-bots/956e4a29-2324-4f90-8334-9b244453535a@main/assets/dove/scene.gltf',
+                function (gltf) {
+                    model = gltf.scene;
+                    model.scale.set(1.5, 1.5, 1.5);
+                    model.position.y = -1;
+                    scene.add(model);
+                    animate();
+                },
+                undefined,
+                function (error) {
+                    console.error('An error happened while loading the model:', error);
+                }
+            );
+
+            window.addEventListener('resize', onWindowResize, false);
         }
 
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
+        function onWindowResize() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        let clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta();
+
+            if (model) {
+                // Gentle rotation
+                model.rotation.y += delta * 0.15;
+
+                // Gentle floating motion
+                model.position.y = -1 + Math.sin(clock.getElapsedTime() * 0.5) * 0.2;
             }
-            slides[slideIndex-1].style.display = "block";  
+
+            renderer.render(scene, camera);
         }
 
+        init3D();
     </script>
 </body>
 </html>
