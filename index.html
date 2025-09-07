@@ -268,7 +268,7 @@
                     <div class="mb-6 lg:mb-0">
                         <i data-feather="zap" class="w-12 h-12 mx-auto mb-2" style="color: var(--color-primary);"></i>
                         <h3 class="text-3xl font-bold font-serif text-white">Martes de Fuego</h3>
-                        <p class="text-gray-300">Cada Martes a las 7:30 PM</p>
+                        <p class="text-gray-300">Cada Martes a las 7:00 PM</p>
                     </div>
                     <div class="border-t-2 lg:border-t-0 lg:border-l-2 border-gray-700 w-full lg:w-auto lg:h-24 my-6 lg:my-0"></div>
                     <div>
@@ -388,32 +388,60 @@
                 <h2 class="section-title">Próximos Eventos</h2>
                 <p class="section-subtitle">¡No te pierdas lo que está sucediendo en Visión Celestial! Únete a nosotros para estos tiempos especiales de adoración y compañerismo.</p>
                 
-                <div class="grid lg:grid-cols-3 gap-8">
-                    <!-- Event 1 -->
-                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
-                        <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Noche de Adoración" class="w-full h-48 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Noche de Adoración</h3>
-                            <p class="text-amber-300 mb-4 flex-grow">Viernes, 29 de Agosto | 8:00 PM</p>
-                            <a href="https://www.facebook.com/share/16bAo1vvSS/" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-auto text-center">Más Detalles</a>
+                <div class="grid lg:grid-cols-1 gap-12">
+                    <!-- Event 1: Domingo de avivamiento -->
+                    <div id="evento-avivamiento" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
+                        <div class="md:w-1/2 relative slideshow-container">
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/c0P6V8Sd/Whats-App-Image-2025-09-07-at-8-14-03-AM.jpg" alt="Domingo de avivamiento 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/L97pQwqv/Gemini-Generated-Image-kbjnrokbjnrokbjn.png" alt="Domingo de avivamiento 2" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/9cxNBTwY/Gemini-Generated-Image-5gjhcy5gjhcy5gjh.png" alt="Domingo de avivamiento 3" class="w-full h-full object-cover">
+                            </div>
+                            <a class="prev">&#10094;</a>
+                            <a class="next">&#10095;</a>
+                        </div>
+                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
+                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Domingo de Avivamiento</h3>
+                            <p class="text-amber-300 text-xl mb-4">Cada Domingo a las 10:00 AM</p>
+                            <p class="text-gray-300 flex-grow">Únete a nosotros para un poderoso tiempo de adoración, enseñanza y ministerio. Un encuentro que refrescará tu espíritu y fortalecerá tu fe.</p>
                         </div>
                     </div>
-                    <!-- Event 2 -->
-                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Servicio Familiar" class="w-full h-48 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Servicio Especial Familiar</h3>
-                            <p class="text-amber-300 mb-4 flex-grow">Domingo, 7 de Septiembre | 10:00 AM</p>
-                            <a href="#" class="btn btn-primary mt-auto text-center">Más Detalles</a>
+                    <!-- Event 2: Marte De Fuego -->
+                    <div id="evento-fuego" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
+                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
+                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Martes de Fuego</h3>
+                            <p class="text-amber-300 text-xl mb-4">Cada Martes a las 7:00 PM</p>
+                            <p class="text-gray-300 flex-grow">Experimenta la presencia de Dios en un servicio lleno de pasión, oración y un mensaje que enciende el corazón. ¡No te lo pierdas!</p>
+                        </div>
+                        <div class="md:w-1/2">
+                            <img src="https://i.postimg.cc/gzM9X5qm/Gemini-Generated-Image-vbcbt6vbcbt6vbcb.png" alt="Martes de Fuego" class="w-full h-full object-cover">
                         </div>
                     </div>
-                    <!-- Event 3 -->
-                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
-                        <img src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Conferencia" class="w-full h-48 object-cover">
-                        <div class="p-6 flex flex-col flex-grow">
-                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Conferencia de Matrimonios</h3>
-                            <p class="text-amber-300 mb-4 flex-grow">Sábado, 20 de Septiembre | 9:00 AM - 2:00 PM</p>
-                            <a href="#" class="btn btn-primary mt-auto text-center">Regístrate Aquí</a>
+                    <!-- Event 3: Domingos de Avivamiento En New Haven -->
+                    <div id="evento-new-haven" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
+                        <div class="md:w-1/2 relative slideshow-container">
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/qp8vhJtr/Gemini-Generated-Image-8b20qq8b20qq8b20.png" alt="Domingos de Avivamiento En New Haven 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/YMFpZrzF/Gemini-Generated-Image-hugdx9hugdx9hugd.png" alt="Domingos de Avivamiento En New Haven 2" class="w-full h-full object-cover">
+                            </div>
+                            <div class="slide fade">
+                                <img src="https://i.postimg.cc/L97pQwqv/Gemini-Generated-Image-kbjnrokbjnrokbjn.png" alt="Domingos de Avivamiento En New Haven 3" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
+                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Domingos de Avivamiento En New Haven</h3>
+                            <p class="text-amber-300 text-xl mb-4">Cada Domingo a las 3:00 PM</p>
+                            <div class="text-gray-300 space-y-2 text-lg">
+                                <p>Nuestra nueva localidad en New Haven. Ven y recibe una palabra de bendición que cambiará tu vida.</p>
+                                <p class="flex items-center"><i data-feather="map-pin" class="w-5 h-5 mr-2"></i>881 Whalley Ave, New Haven, CT 06515</p>
+                            </div>
+                            <a href="https://www.google.com/maps/dir/?api=1&destination=881+Whalley+Ave,+New+Haven,+CT+06515" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-4 self-start">Obtener Direcciones</a>
                         </div>
                     </div>
                 </div>
@@ -552,6 +580,61 @@
 
     </script>
 
+    <script>
+        // Slideshow Logic
+        function setupSlideshow(containerId, isAutomatic = false, interval = 4000) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const slides = container.querySelectorAll('.slide');
+            let slideIndex = 0;
+            let slideInterval;
+
+            function showSlides(n) {
+                if (n >= slides.length) { slideIndex = 0; }
+                if (n < 0) { slideIndex = slides.length - 1; }
+
+                slides.forEach(slide => slide.style.display = "none");
+                slides[slideIndex].style.display = "block";
+            }
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function startAutomatic() {
+                stopAutomatic(); // Prevent multiple intervals
+                slideInterval = setInterval(() => {
+                    plusSlides(1);
+                }, interval);
+            }
+
+            function stopAutomatic() {
+                clearInterval(slideInterval);
+            }
+
+            const prevButton = container.querySelector('.prev');
+            const nextButton = container.querySelector('.next');
+
+            if(prevButton && nextButton){
+                prevButton.addEventListener('click', () => plusSlides(-1));
+                nextButton.addEventListener('click', () => plusSlides(1));
+            }
+
+            if (isAutomatic) {
+                container.addEventListener('mouseenter', stopAutomatic);
+                container.addEventListener('mouseleave', startAutomatic);
+                startAutomatic();
+            }
+
+            showSlides(slideIndex);
+        }
+    </script>
+
     <!-- Prayer Wall Logic -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -630,6 +713,11 @@
         // 3D Model Credit: "Dove" (https://sketchfab.com/3d-models/dove-86f9ae86865c46a4ba54a6fa6ad4d86a) by e3rt4 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
         const container = document.getElementById('hero-3d-container');
         let scene, camera, renderer, model;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupSlideshow('evento-avivamiento');
+            setupSlideshow('evento-new-haven', true, 4000);
+        });
 
         function init3D() {
             scene = new THREE.Scene();
