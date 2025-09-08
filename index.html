@@ -177,11 +177,7 @@
         }
         .slide {
             display: none;
-            animation: fade 1.5s;
-        }
-        @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
+            transition: opacity 0.5s ease-in-out;
         }
         .prev, .next {
             cursor: pointer;
@@ -247,7 +243,7 @@
                 <div class="container mx-auto px-6 text-center text-white">
                     <h1 class="text-5xl md:text-8xl font-extrabold leading-tight mb-4">Un Lugar Para Pertenecer</h1>
                     <p class="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto">Somos una iglesia Cristiana, una familia multicultural creciendo en fe, esperanza y amor en el corazón de Bridgeport.</p>
-                    <p class="text-amber-300 italic text-xl mb-8 font-serif">"Y todos los días, en el templo y por las casas, no cesaban de enseñar y predicar a Jesucristo." - Hechos 5:42</p>
+                    <p class="text-amber-300 italic text-xl mb-8 font-serif">"Porque donde están dos o tres congregados en mi nombre, allí estoy yo en medio de ellos." - Mateo 18:20</p>
                     <div class="space-y-4 md:space-y-0 md:space-x-4">
                         <a href="#new" class="btn btn-primary">Planifica Tu Visita</a>
                     </div>
@@ -268,7 +264,7 @@
                     <div class="mb-6 lg:mb-0">
                         <i data-feather="zap" class="w-12 h-12 mx-auto mb-2" style="color: var(--color-primary);"></i>
                         <h3 class="text-3xl font-bold font-serif text-white">Martes de Fuego</h3>
-                        <p class="text-gray-300">Cada Martes a las 7:00 PM</p>
+                        <p class="text-gray-300">Cada Martes a las 7:30 PM</p>
                     </div>
                     <div class="border-t-2 lg:border-t-0 lg:border-l-2 border-gray-700 w-full lg:w-auto lg:h-24 my-6 lg:my-0"></div>
                     <div>
@@ -310,17 +306,9 @@
                         <img src="https://i.ibb.co/yQWkS0R/1000061421.jpg" alt="Pastores Luis y Ana Mateo" class="rounded-2xl shadow-lg w-full">
                     </div>
                     <div class="md:w-1/2">
-                        <h3 class="text-4xl font-bold text-white mb-4 font-serif">Nuestra Misión</h3>
-                        <p class="text-gray-300 mb-4 text-lg">Somos una Iglesia Multicultural. Nuestra visión es la predicación del Evangelio de Jesucristo, local y internacional a toda criatura por cuanto es un mensaje vigente y poderoso para transformar al hombre y a la mujer de hoy.</p>
-                        <p class="text-gray-300 mb-4 text-lg">Ganar almas por el Espíritu Santo en santidad, consagración y servicio. Levantar una generación de discípulos y líderes que ganen las naciones de la tierra. Establecer ministerios fieles e integrales conforme al propósito y voluntad de Dios para con la iglesia.</p>
-                        <h4 class="text-2xl font-bold text-white mb-2 mt-6 font-serif">Comprometidos con:</h4>
-                        <ul class="list-disc list-inside text-gray-300 space-y-2 text-lg">
-                            <li>Evangelización.</li>
-                            <li>Discipulado.</li>
-                            <li>Formación de líderes.</li>
-                            <li>Misiones.</li>
-                        </ul>
-                        <p class="text-gray-300 mt-4 text-lg">Con el sostenimiento, desarrollo y avance de la Obra de la iglesia y el Evangelio en toda el área de Connecticut.</p>
+                        <h3 class="text-4xl font-bold text-white mb-4 font-serif">Guiados por Nuestros Pastores</h3>
+                        <p class="text-gray-300 mb-6 text-lg">Bajo el liderazgo de los pastores <strong>Luis y Ana Mateo</strong>, Visión Celestial es una iglesia comprometida con las verdades eternas de la Biblia. Somos una iglesia multicultural que celebra la diversidad de las naciones, unidos como un solo cuerpo en Cristo. Creemos en el poder transformador del Evangelio y nos esforzamos por vivir nuestra fe de manera auténtica y significativa. Nuestra comunidad es un lugar para preguntas, crecimiento y para descubrir juntos el profundo amor de Jesucristo.</p>
+                        <a href="#" class="btn btn-primary">Nuestras Creencias</a>
                     </div>
                 </div>
             </div>
@@ -333,21 +321,21 @@
                 <p class="section-subtitle">El crecimiento espiritual ocurre en comunidad. Encuentra tu lugar para conectar, servir y crecer con otros en Visión Celestial.</p>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Ministry Card 1 -->
-                    <div class="ministry-card group" style="background-image: url('https://images.unsplash.com/photo-1459749411175-04bf5292ceea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
+                    <div class="ministry-card group" style="background-image: url('https://i.postimg.cc/hDVzKL9L/IMG-3707.jpg');">
                         <div class="ministry-content flex flex-col justify-end h-64">
                             <h3 class="text-2xl font-bold mb-2 font-serif">En Espíritu y en Verdad</h3>
                             <p class="text-gray-200 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">Nuestro ministerio de alabanza, dedicado a guiar a la congregación a una adoración genuina.</p>
                         </div>
                     </div>
                     <!-- Ministry Card 2: User-provided image updated here -->
-                    <div class="ministry-card" style="background-image: url('https://i.postimg.cc/kqYgWR4x/IMG-3588.jpg');">
+                    <div class="ministry-card" style="background-image: url('https://i.ibb.co/9v0p4pY/1000049383.jpg');">
                         <div class="ministry-content flex flex-col justify-end h-64">
                             <h3 class="text-2xl font-bold mb-2 font-serif">Visión Celestial Danza y Arte</h3>
                             <p class="text-gray-200 mb-4">Adoramos a Dios a través del movimiento y la creatividad. Un ministerio para expresar nuestra fe con el cuerpo y el alma.</p>
                         </div>
                     </div>
                     <!-- Ministry Card 3 -->
-                    <div class="ministry-card" style="background-image: url('https://i.postimg.cc/B4F1ZCNj/Gemini-Generated-Image-bwffepbwffepbwff.png');">
+                    <div class="ministry-card" style="background-image: url('https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');">
                         <div class="ministry-content flex flex-col justify-end h-64">
                             <h3 class="text-2xl font-bold mb-2 font-serif">La Tribu de Judá</h3>
                             <p class="text-gray-200 mb-4">Nuestra escuela dominical, donde los niños y jóvenes aprenden la Palabra de Dios de una manera divertida.</p>
@@ -388,66 +376,35 @@
                 <h2 class="section-title">Próximos Eventos</h2>
                 <p class="section-subtitle">¡No te pierdas lo que está sucediendo en Visión Celestial! Únete a nosotros para estos tiempos especiales de adoración y compañerismo.</p>
                 
-                <div class="grid lg:grid-cols-1 gap-12">
-                    <!-- Event 1: Domingo de avivamiento -->
-                    <div id="evento-avivamiento" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
-                        <div class="md:w-1/2 relative slideshow-container">
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/c0P6V8Sd/Whats-App-Image-2025-09-07-at-8-14-03-AM.jpg" alt="Domingo de avivamiento 1" class="w-full h-full object-cover">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Event 1: Domingo de Avivamiento -->
+                    <div class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col event-card">
+                        <div id="slideshow-avivamiento" class="relative slideshow-container h-48">
+                            <div class="slide" style="display: block;">
+                                <img src="https://i.postimg.cc/9cxNBTwY/Gemini-Generated-Image-5gjhcy5gjhcy5gjh.png" alt="Domingo de avivamiento 1" class="w-full h-full object-cover">
                             </div>
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/L97pQwqv/Gemini-Generated-Image-kbjnrokbjnrokbjn.png" alt="Domingo de avivamiento 2" class="w-full h-full object-cover">
+                            <div class="slide">
+                                <img src="https://i.postimg.cc/4sRCKzpK/Gemini-Generated-Image-n2aqqtn2aqqtn2aq.png" alt="Domingo de avivamiento 2" class="w-full h-full object-cover">
                             </div>
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/9cxNBTwY/Gemini-Generated-Image-5gjhcy5gjhcy5gjh.png" alt="Domingo de avivamiento 3" class="w-full h-full object-cover">
-                            </div>
-                            <a class="prev">&#10094;</a>
-                            <a class="next">&#10095;</a>
                         </div>
-                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Domingo de Avivamiento</h3>
-                            <p class="text-amber-300 text-xl mb-4">Cada Domingo a las 10:00 AM</p>
-                            <p class="text-gray-300 flex-grow">Únete a nosotros para un poderoso tiempo de adoración, enseñanza y ministerio. Un encuentro que refrescará tu espíritu y fortalecerá tu fe.</p>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-bold font-serif text-white mb-2">Domingo de Avivamiento</h3>
+                            <p class="text-amber-300 mb-4 flex-grow">Cada Domingo a las 10:00 AM</p>
                         </div>
                     </div>
-                    <!-- Event 2: Marte De Fuego -->
-                    <div id="evento-fuego" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
-                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Martes de Fuego</h3>
-                            <p class="text-amber-300 text-xl mb-4">Cada Martes a las 7:00 PM</p>
-                            <p class="text-gray-300 flex-grow">Experimenta la presencia de Dios en un servicio lleno de pasión, oración y un mensaje que enciende el corazón. ¡No te lo pierdas!</p>
-                        </div>
-                        <div class="md:w-1/2">
-                            <img src="https://i.postimg.cc/gzM9X5qm/Gemini-Generated-Image-vbcbt6vbcbt6vbcb.png" alt="Martes de Fuego" class="w-full h-full object-cover">
-                        </div>
-                    </div>
-                    <!-- Event 3: Domingos de Avivamiento En New Haven -->
-                    <div id="evento-new-haven" class="glass-effect rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row event-card">
-                        <div class="md:w-1/2 relative slideshow-container">
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/qp8vhJtr/Gemini-Generated-Image-8b20qq8b20qq8b20.png" alt="Domingos de Avivamiento En New Haven 1" class="w-full h-full object-cover">
-                            </div>
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/YMFpZrzF/Gemini-Generated-Image-hugdx9hugdx9hugd.png" alt="Domingos de Avivamiento En New Haven 2" class="w-full h-full object-cover">
-                            </div>
-                            <div class="slide fade">
-                                <img src="https://i.postimg.cc/L97pQwqv/Gemini-Generated-Image-kbjnrokbjnrokbjn.png" alt="Domingos de Avivamiento En New Haven 3" class="w-full h-full object-cover">
-                            </div>
-                        </div>
-                        <div class="p-6 md:w-1/2 flex flex-col justify-center">
-                            <h3 class="text-3xl font-bold font-serif text-white mb-2">Domingos de Avivamiento En New Haven</h3>
-                            <p class="text-amber-300 text-xl mb-4">Cada Domingo a las 3:00 PM</p>
-                            <div class="text-gray-300 space-y-2 text-lg">
-                                <p>Nuestra nueva localidad en New Haven. Ven y recibe una palabra de bendición que cambiará tu vida.</p>
-                                <p class="flex items-center"><i data-feather="map-pin" class="w-5 h-5 mr-2"></i>881 Whalley Ave, New Haven, CT 06515</p>
-                            </div>
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=881+Whalley+Ave,+New+Haven,+CT+06515" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-4 self-start">Obtener Direcciones</a>
-                        </div>
-                    </div>
+                    <!-- More events can be added here -->
                 </div>
             </div>
         </section>
 
+        <!-- Giving & Stewardship -->
+        <section id="giving" class="py-20 bg-black text-white" style="background-image: linear-gradient(rgba(10, 25, 49, 0.9), rgba(10, 25, 49, 0.9)), url('https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover; background-position: center; background-attachment: fixed;">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="section-title">Colabora con la Misión</h2>
+                <p class="section-subtitle">Tu generosidad es un acto de adoración que impulsa el ministerio de Visión Celestial, permitiéndonos compartir la esperanza del Evangelio en Bridgeport y más allá.</p>
+                <a href="#" class="btn btn-primary">Ofrendar en Línea</a>
+            </div>
+        </section>
         
         <!-- I'm New Section -->
         <section id="new" class="py-20" style="background-color: #0F2C59;">
@@ -576,63 +533,28 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll(); // Trigger on load
 
-        // Slideshow Logic is no longer needed.
+        // Slideshow Logic for events
+        document.addEventListener('DOMContentLoaded', () => {
+            const slideshows = document.querySelectorAll('.slideshow-container');
 
-    </script>
+            slideshows.forEach(slideshow => {
+                let slideIndex = 0;
+                const slides = slideshow.querySelectorAll('.slide');
 
-    <script>
-        // Slideshow Logic
-        function setupSlideshow(containerId, isAutomatic = false, interval = 4000) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
+                function showSlides() {
+                    slides.forEach(slide => {
+                        slide.style.opacity = '0';
+                        slide.style.position = 'absolute';
+                    });
+                    slideIndex++;
+                    if (slideIndex > slides.length) { slideIndex = 1; }
+                    slides[slideIndex - 1].style.opacity = '1';
+                }
 
-            const slides = container.querySelectorAll('.slide');
-            let slideIndex = 0;
-            let slideInterval;
-
-            function showSlides(n) {
-                if (n >= slides.length) { slideIndex = 0; }
-                if (n < 0) { slideIndex = slides.length - 1; }
-
-                slides.forEach(slide => slide.style.display = "none");
-                slides[slideIndex].style.display = "block";
-            }
-
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
-
-            function currentSlide(n) {
-                showSlides(slideIndex = n);
-            }
-
-            function startAutomatic() {
-                stopAutomatic(); // Prevent multiple intervals
-                slideInterval = setInterval(() => {
-                    plusSlides(1);
-                }, interval);
-            }
-
-            function stopAutomatic() {
-                clearInterval(slideInterval);
-            }
-
-            const prevButton = container.querySelector('.prev');
-            const nextButton = container.querySelector('.next');
-
-            if(prevButton && nextButton){
-                prevButton.addEventListener('click', () => plusSlides(-1));
-                nextButton.addEventListener('click', () => plusSlides(1));
-            }
-
-            if (isAutomatic) {
-                container.addEventListener('mouseenter', stopAutomatic);
-                container.addEventListener('mouseleave', startAutomatic);
-                startAutomatic();
-            }
-
-            showSlides(slideIndex);
-        }
+                showSlides();
+                setInterval(showSlides, 4000); // Change image every 4 seconds
+            });
+        });
     </script>
 
     <!-- Prayer Wall Logic -->
@@ -713,11 +635,6 @@
         // 3D Model Credit: "Dove" (https://sketchfab.com/3d-models/dove-86f9ae86865c46a4ba54a6fa6ad4d86a) by e3rt4 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
         const container = document.getElementById('hero-3d-container');
         let scene, camera, renderer, model;
-
-        document.addEventListener('DOMContentLoaded', () => {
-            setupSlideshow('evento-avivamiento');
-            setupSlideshow('evento-new-haven', true, 4000);
-        });
 
         function init3D() {
             scene = new THREE.Scene();
